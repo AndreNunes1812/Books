@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     data: [],
-    isFetching: false,
+    loading: false,
+    refreshing: false,
     error: false,
     totalElements: 0 ,
     inputQuery: null 
@@ -8,15 +9,16 @@ const INITIAL_STATE = {
 
 const list = (state = INITIAL_STATE, action) => {
 
-    console.log('reducer:',action.type)
-    console.log('reducer value:',action)
+    // console.log('reducer:',action.type)
+    // console.log('reducer value:',action)
     
     switch(action.type) {
         case "LOAD_DATA_REQUEST":
             return {
                 ...state,
                 inputQuery: action.inputQuery,
-                maxResults: action.maxResults
+                maxResults: action.maxResults,
+                refreshing: action.refreshing
             }
         case "LOAD_DATA_SUCCESS":
             return {
@@ -27,8 +29,8 @@ const list = (state = INITIAL_STATE, action) => {
         case "LOAD_DATA_FOOTER":
             return {
                 ...state,
-                refreshing: false,
-                loading: true
+                refreshing: action.refreshing,
+                loading: action.loading
             };
         default:
             return state;

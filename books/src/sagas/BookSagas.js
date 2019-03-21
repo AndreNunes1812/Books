@@ -6,8 +6,9 @@ const BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 function *getBooks(search) {
 
-    console.log('query:', search)
+   // console.log('GetBoooooook')
 
+   // console.log('query:', search)
     try {
         const dados = yield axios.get(`${BASE_URL}${search.inputQuery}&maxResults=${search.maxResults}`);
 
@@ -28,7 +29,7 @@ function *getBooks(search) {
      
         yield put(loadDataSuccess( newDados , dados.data.totalItems));
 
-        console.log('dados no saga:',dados)
+     //   console.log('dados no saga:',dados)
 
     } catch (e) {
         console.log('Erro,:',e)

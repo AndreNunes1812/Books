@@ -1,6 +1,6 @@
 export const loadDataRequest = (inputQuery, maxResults) => {
-    console.log('Daya Request:',inputQuery)
-    console.log('MaxResults Request:',maxResults)
+    // console.log('Daya Request:',inputQuery)
+    // console.log('MaxResults Request:',maxResults)
     
     return {
         type: "LOAD_DATA_REQUEST",
@@ -17,7 +17,7 @@ export const loadDataSuccess = (data , totalElements) => {
     }
 }
 
-export const loadDataFooter = () => {
+export const loadDataFooter = (refreshing,loading) => {
     return {
         type: "LOAD_DATA_FOOTER"
     }
