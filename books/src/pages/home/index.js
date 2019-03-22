@@ -12,9 +12,10 @@ export default class HomeScreen extends Component {
     }
     render() {
         const {navigate} = this.props.navigation
+        console.log('Navegacao:', this.props.navigation)
         return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={()=> navigate('list', {name: 'Andre'})}>
+            <TouchableOpacity onPress={() => navigate('list', { otherParam: 'TEDTE do andre'}, this.props.navigation)}>
                 <View style={styles.button}>
                     <Text style={styles.buttonText}>BOOKS on-line</Text>
                 </View>

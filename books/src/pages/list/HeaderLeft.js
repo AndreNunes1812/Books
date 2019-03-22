@@ -1,38 +1,40 @@
 import React, { Component } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Button   } from 'react-native-elements'
-import { Platform, StyleSheet, Text, TextInput, View, TouchableOpacity, FlatList, Image, ActivityIndicator} from 'react-native';
-
+import { Platform, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 
 class HeaderLeft extends Component {
 
-    
-    render() {
+  componentDidMount() {
+    console.log("DIDMOUNT headerleft:",this.props)
+  }
+
+
+  _onPress = () => {
+    console.log('euta', this.props)
+    this.props.navigation.navigate("MainNavigator")
+  }
+
+  render() {
         return (
-            <View style={styles.container}>
-               <Icon style={styles.alinharTextLeft}
-                    name='arrow-left'
-                    size={20}
-                    onPress={()=> console.log('érwerewrwerwe')}
-               />
-             </View>
-        );
+          <View style={{marginBottom: 20 , width: 50, height: 50}} >
+            <TouchableOpacity onPress={this._onPress} >
+              <Image style={styles.imgRight} source={require('../img/left-arrow.png')} />       
+            </TouchableOpacity>
+          </View> 
+       );
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       flexDirection: 'row',
-      backgroundColor: '#FFE207', 
-  
+      backgroundColor: '#FFE207',   
     },
-    alinharTextLeft: {                  
-      marginLeft: 15,            
-     
-    },
-  });
-
+    imgRight: {
+      width: 22,
+      height: 20,
+      margin:10,     
+  },
+});
 
 export default HeaderLeft; 

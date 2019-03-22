@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { StyleSheet, Platform, Text, TextInput, View, Button, TouchableOpacity, FlatList, Image, ActivityIndicator} from 'react-native';
+import { 
+  StyleSheet, 
+  Platform, 
+  View, 
+  FlatList, 
+  Image, 
+  ActivityIndicator
+} from 'react-native';
 
 import Header from './Header'
 
@@ -23,24 +29,34 @@ class ListScreen extends Component {
         loading: false,
         refreshing: false,
         error: null,
+        
       }
+
+      navegacao = []
     }
+
 
     static navigationOptions = {
-        title: null, 
-        headerLeft: (
-          <View >  
-            <Header />
-          </View>
-        )      
-        
+      title: null,        
+      headerRight: (
+        <View >             
+          <Header navegacao={this.props}/>
+        </View>
+      )      
+      
     }
 
+
     componentDidMount() {    
-     console.log('DidMount')  
-     this.setState({ maxResults: 0, loading: false, refreshing: false})  
+     console.log('DidMount LIST:', this.props)  
+     this.setState({ maxResults: 0, loading: false, refreshing: false}, ()=> {
+       navegacao= this.props.navigation.goBack
+     })  
      this.updateBookApi();            
     }
+
+
+    
 
     updateBookApi = () => {
       console.log('updatateBook 0')    
@@ -97,8 +113,9 @@ class ListScreen extends Component {
     }
 
     render() {
-        const {navigate} = this.props.navigation
+      
         console.log('BookList:',this.props.bookList.list.data)
+        console.log('props do state:', navegacao)
 
         return (
         <View style={styles.container}>

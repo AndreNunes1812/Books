@@ -5,7 +5,10 @@ import DetailScreen from './pages/details';
 import ListScreen from './pages/list'
 
 const MainNavigator = createStackNavigator({
-  Home: {screen: HomeScreen},
+ 
+  Home: {
+    screen: HomeScreen ,   
+  },
   list: {
           screen: ListScreen,
         },
@@ -16,7 +19,8 @@ const MainNavigator = createStackNavigator({
     headerStyle: {
       backgroundColor: '#FFE207',
     }         
-  } 
+  }
+   
 
 })
 
